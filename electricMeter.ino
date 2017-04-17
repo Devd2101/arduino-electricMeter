@@ -20,8 +20,6 @@ void setup() {
   Serial.begin(9600);
   lcd.begin(16, 2); // set up the LCD's number of columns and rows:
   lcd.print(" Electric Meter ");// Print a message to the LCD.
-  pinMode(ledPin, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), blink, FALLING);
   int eeAddress = 0;
   Meter customVar; //Variable to store custom object read from EEPROM.
   EEPROM.get(eeAddress, customVar);
@@ -33,6 +31,8 @@ void setup() {
   mread1 = customVar.mread;
   Serial.println(mread1);
   Serial.println("================================================");
+  pinMode(ledPin, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), blink, FALLING);
 }
 //================================================================
 void loop() {
